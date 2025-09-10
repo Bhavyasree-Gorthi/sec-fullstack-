@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exp 2 - Stylish Student Registration Form</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h2 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    /* Card container */
+    .form-container {
+      max-width: 600px;
+      width: 100%;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    /* Grid layout */
+    form {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #333;
+      margin-top: 5px;
+    }
+
+    /* Stylish Inputs */
+    input, select {
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      transition: 0.3s;
+      font-size: 14px;
+    }
+
+    input:focus, select:focus {
+      border-color: #2575fc;
+      box-shadow: 0 0 8px rgba(37,117,252,0.6);
+    }
+
+    /* Hobbies checkboxes inline */
+    .hobbies, .gender-options {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    /* Button styling */
+    button {
+      grid-column: span 2;
+      padding: 12px;
+      background: linear-gradient(135deg, #ff512f, #dd2476);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #dd2476, #ff512f);
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      form {
+        grid-template-columns: 1fr;
+      }
+      button {
+        grid-column: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <h2>✨ Student Registration Form ✨</h2>
+    <div class="form-container">
+      <form>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label>Gender</label>
+        <div class="gender-options">
+          <input type="radio" id="male" name="gender" value="Male">
+          <label for="male">Male</label>
+          <input type="radio" id="female" name="gender" value="Female">
+          <label for="female">Female</label>
+        </div>
+
+        <label>Hobbies</label>
+        <div class="hobbies">
+          <input type="checkbox" id="sports" name="hobbies" value="Sports">
+          <label for="sports">🏀 Sports</label>
+          <input type="checkbox" id="music" name="hobbies" value="Music">
+          <label for="music">🎵 Music</label>
+          <input type="checkbox" id="reading" name="hobbies" value="Reading">
+          <label for="reading">📚 Reading</label>
+        </div>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter password" required>
+
+        <button type="submit">🚀 Register</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

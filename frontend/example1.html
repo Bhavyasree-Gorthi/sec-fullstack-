@@ -13,7 +13,7 @@
       background-color: #2d89ef;
       padding: 15px;
       color: white;
-      flex-wrap: wrap;
+      flex-wrap: wrap; /* makes nav stack on smaller screens */
     }
     header h1 {
       margin: 0;
@@ -32,7 +32,7 @@
       text-decoration: underline;
     }
 
-    /* ---------- FORM & STYLES (same as before) ---------- */
+    /* ---------- REGISTRATION FORM (GRID) ---------- */
     .form-container {
       max-width: 600px;
       margin: 30px auto;
@@ -59,6 +59,8 @@
       gap: 10px;
       align-items: center;
     }
+
+    /* ---------- BUTTON ---------- */
     button {
       grid-column: span 2;
       padding: 10px;
@@ -68,11 +70,13 @@
       border-radius: 5px;
       font-size: 16px;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: background 0.3s; /* smooth hover */
     }
     button:hover {
       background-color: #1b5cb8;
     }
+
+    /* ---------- RESPONSIVE ---------- */
     @media (max-width: 600px) {
       form {
         grid-template-columns: 1fr;
@@ -97,9 +101,9 @@
   <header>
     <h1>Bhavya</h1>
     <nav>
-      <a href="home.html">Home</a>
-      <a href="courses.html">Courses</a>
-      <a href="contact.html">Contact</a>
+      <a href="#">Home</a>
+      <a href="#">Courses</a>
+      <a href="#">Contact</a>
     </nav>
   </header>
 

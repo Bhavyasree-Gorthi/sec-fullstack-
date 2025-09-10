@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>Grid Layout Example</title>
+        <style>
+            .temp{
+                border: 2px solid black;
+                width: 30%;
+                margin-left: 5%;
+                padding: 10px;
+                background-color: lightgray;
+            }
+            .form{
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                grid-gap: 10px;
+            }
+            button{
+                grid-column: span 2;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="temp">
+            <form class="form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" value="Bhavya">
+                
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="bhavyasee@gmail.com">
+                
+                <label for="usn">USN</label>
+                <input type="text" id="usn" name="usn" placeholder="23171">
+                
+                <label for="gender">Gender</label>
+                <div>
+                    <input type="radio" id="male" name="gender" value="Male">
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="Female">
+                    <label for="female">Female</label>
+                </div>
+                
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone" placeholder="34754860465">
+                
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <br>
+
+        <table border="1" cellpadding="5">
+            <tr>
+                <td>Name</td>
+                <td><input type="text" id="n" name="n" value="Bhavya"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="email" id="e" name="e" value="bhavyasee@gmail.com"></td>
+            </tr>
+            <tr>
+                <td>USN</td>
+                <td><input type="text" id="u" name="u"></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td><input type="text" id="p" name="p"></td>        
+            </tr>  
+            <tr align="center">
+                <td colspan="2"><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+    </body>
+</html>
