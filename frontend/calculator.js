@@ -1,27 +1,20 @@
-function add(a, b) {
-    return a + b;
-}
-
-function subtract(a, b) {
-    return a - b;
-}
-
-function multiply(a, b) {
-    return a * b;
-}
-
-function divide(a, b) {
-    if (b === 0) {
-        return "Cannot divide by zero";
+function calculate() {
+    const num1 = parseFloat(document.getElementById('num1').value);
+    const num2 = parseFloat(document.getElementById('num2').value);
+    const operation = document.getElementById('operation').value;
+    let result;
+    if (operation === "add") {
+        result = num1 + num2;
+    } else if (operation === "sub") {
+        result = num1 - num2;
+    } else if (operation === "mul") {
+        result = num1 * num2;
+    } else if (operation === "div") {
+        if (num2 === 0) {
+            result = "Cannot divide by zero";
+        } else {
+            result = num1 / num2;
+        }
     }
-    return a / b;
+    document.getElementById('result').innerText = "Result: " + result;
 }
-
-// Example usage:
-let num1 = 4;
-let num2 = 6;
-
-console.log("Addition:", add(num1, num2));
-console.log("Subtraction:", subtract(num1, num2));
-console.log("Multiplication:", multiply(num1, num2));
-console.log("Division:", divide(num1, num2));
