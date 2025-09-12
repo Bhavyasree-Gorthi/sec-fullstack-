@@ -10,3 +10,4 @@ for (let i = 0; i < minutes; i += 10) {
 }
 
 console.log("Total distance travelled:", distance.toFixed(2), "km");
+
