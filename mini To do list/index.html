@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #7a9ee6;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+    }
+    h2 {
+      color: #d8c7c7;
+      text-align: center;
+    }
+    #myInput {
+      width: calc(100% - 22px);
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #f3ebeb;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      transition: border-color 0.3s;
+    }
+    #myInput:focus {
+      border-color: #e6e6e0;
+      outline: none;
+    }
+    button {
+      background-color: #3b82f6;
+      color: rgb(227, 191, 217);
+      border: none;
+      padding: 10px 15px;
+      margin-right: 5px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+    button:hover:not(:disabled) {
+      background-color: #ede8f0;
+    }
+    button:disabled {
+      background-color: #9ca3af;
+      cursor: not-allowed;
+    }
+    #taskList {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 20px;
+      border-top: 1px solid #12ba47;
+    }
+    #taskList li {
+      background-color: rgb(232, 66, 218);
+      margin-bottom: 8px;
+      padding: 12px 15px;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      font-size: 16px;
+      user-select: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #taskList li:hover {
+      background-color: #cf0714;
+    }
+    .completeBtn {
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s;
+    }
+    .completeBtn:hover {
+      background-color: #27ae60;
+    }
+  </style>
+</head>
+<body>
+  <h2>Mini To-Do List</h2>
+  <br></br>
+  <input type="text" id="myInput" placeholder="Enter task">
+  <button id="addTask">Add Task</button>
+  <button id="remove">Remove </button>
+  <ul id="taskList"></ul>
+
+  <script>
+    $(document).ready(function() {
+
+      $("#addTask").click(function() {
+        let task = $("#myInput").val().trim();
+        if (task) {
+    
+          $("#taskList").append(
+            `<li>${task} <button class="completeBtn">Complete</button></li>`
+          );
+          $("#myInput").val(''); 
+        } 
+      });
+
+      $("#remove").click(function() {
+        $("#taskList li:last").remove();
+      });
+
+      $("#myInput").keydown(function(e) {
+        if (e.key === 'Enter') {
+          $("#addTask").click();
+        }
+      });
+
+      
+      $("#taskList").on("click", ".completeBtn", function() {
+        let li = $(this).parent(); 
+      
+        li.css("background-color", "yellow");
+        
+        setTimeout(() => {
+          li.remove();
+        }, 2000);
+      });
+
+    });
+  </script>
+</body>
+</html>
