@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h2>Hello jQuery</h2>
+  <h3>just for timepass</h3>
+  <button id="btn">Click Me</button>
+  <div class="temp">
+    <p>this is a different division
+      on which we are using the class tags using jquery
+    </p>
+  </div>
+  <input type="text" id="myInput">
+  <p id="output">Hi this text</p>
+  <ul id="list">
+    <li>Item 1</li>
+  </ul>
+  <button id="add">Add Item</button>
+  <button id="addf">Add Item first</button>
+  <button id="remove">Remove Last</button>
+  <button id="toggle">Toggle List</button>
+  <button id="clear">Clear Input</button>
+  <button id="fade">Fade Toggle</button>
+  <button id="slide">Slide Toggle</button>
+  <button id="disable">Disable Button</button>
+
+  <script>
+    $(document).ready(function(){
+
+      // Change texts and styles on button click
+      $("#btn").click(function(){
+        $("h2").text("Button Clicked!");
+        $("h3").text("Button Clicked! Duplicate");
+        $(".temp").css("background-color", "yellow");
+        $("p").css("font-weight", "bold");
+      });
+
+      // Add new item at the end of the list
+      $("#add").click(function(){
+        $("#list").append("<li>New Item appended from script</li>");
+      });
+
+      // Add new item at the beginning of the list
+      $("#addf").click(function(){
+        $("#list").prepend("<li>New Item prepended from script</li>");
+      });
+
+      // Remove last item from the list
+      $("#remove").click(function(){
+        $("#list li:last").remove();
+      });
+
+      // Update output text on input keydown
+      $("#myInput").keydown(function(){
+        let val = $("#myInput").val();
+        $("#output").text(val);
+      });
+
+      // Text and styles changes on double click
+      $("#btn").dblclick(function(){
+        $("h2").text("Button Clicked Twice!");
+        $("h3").text("Button Clicked! Twice Duplicate");
+        $(".temp").css("background-color", "orange");
+        $("p").css("font-weight", "calibri");
+      });
+
+      // Text and styles changes on hover
+      $("#btn").hover(function(){
+        $("h2").text("Button Clicked but Hovered!");
+        $("h3").text("Button and Hovered! Duplicate");
+        $(".temp").css("background-color", "cyan");
+        $("p").css("font-weight", "lucida");
+      });
+
+      // Toggle visibility of the list
+      $("#toggle").click(function(){
+        $("#list").toggle();
+      });
+
+      // Clear input field and reset output text
+      $("#clear").click(function(){
+        $("#myInput").val('');
+        $("#output").text("Input cleared!");
+      });
+
+      // Remove list item on double click
+      $("#list").on('dblclick', 'li', function(){
+        $(this).remove();
+      });
+
+      // Highlight list item on mouse enter and remove highlight on mouse leave
+      $("#list").on('mouseenter', 'li', function(){
+        $(this).css("background-color", "lightgray");
+      }).on('mouseleave', 'li', function(){
+        $(this).css("background-color", "");
+      });
+
+      // Convert input text to uppercase and update output dynamically
+      $("#myInput").on('input', function(){
+        let val = $(this).val().toUpperCase();
+        $("#output").text(val);
+      });
+
+      // Store and update click count data on button, log in console
+      $("#btn").data("clickedCount", 0);
+      $("#btn").click(function(){
+        let count = $(this).data("clickedCount") + 1;
+        $(this).data("clickedCount", count);
+        console.log("Button clicked " + count + " times");
+      });
+
+      // Alert on window resize event (throttled)
+      let resizeTimer;
+      $(window).resize(function(){
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function(){
+          alert("Window resized!");
+        }, 500);
+      });
+
+      // Fade toggle effect on the list
+      $("#fade").click(function(){
+        $("#list").fadeToggle("slow");
+      });
+
+      // Slide toggle effect on the list
+      $("#slide").click(function(){
+        $("#list").slideToggle("slow");
+      });
+
+      // Disable the "Add Item" button
+      $("#disable").click(function(){
+        $("#add").prop("disabled", true).text("Add Disabled");
+      });
+
+    });
+  </script>
+</body>
+</html>
