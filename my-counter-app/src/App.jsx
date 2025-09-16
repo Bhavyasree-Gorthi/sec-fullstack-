@@ -1,17 +1,23 @@
-
 import { useState } from "react";
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 
 function App() {
-  // For the counter demo
+  // Counter state & manual input state
   const [count, setCount] = useState(0);
+  const [manualInput, setManualInput] = useState("");
 
-  // For the To-Do list
+  // To-Do list states
   const [tasks, setTasks] = useState([]);
   const [input, setInput] = useState("");
 
+
+  const buttonStyle = {
+    color: count > 5 ? "black" : "white"
+  };
+
+  // Add new task
   const addTask = () => {
     const trimmed = input.trim();
     if (trimmed) {
@@ -20,11 +26,12 @@ function App() {
     }
   };
 
+  // Remove last task
   const removeTask = () => {
     setTasks(tasks.slice(0, -1));
   };
 
-  // Mark task complete and remove after delay
+  // Mark task complete and auto-remove after 2 seconds
   const completeTask = (index) => {
     setTasks((prev) =>
       prev.map((task, i) =>
@@ -36,19 +43,18 @@ function App() {
     }, 2000);
   };
 
-  // If tasks are strings, convert them into objects for consistency
+  // Normalize tasks as objects
   const taskList = tasks.map((task) =>
     typeof task === "string" ? { text: task, completed: false } : task
   );
 
-  // Enter key handler for adding tasks
   const onInputKeyDown = (e) => {
     if (e.key === "Enter") addTask();
   };
 
   return (
     <>
-      {/* Vite + React demo */}
+      {/* Logos */}
       <div>
         <a href="https://vite.dev" target="_blank" rel="noreferrer">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -57,15 +63,39 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
+
       <h1>Vite + React</h1>
+
+      {/* Counter with manual input */}
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <input
+          type="number"
+          min="0"
+          value={manualInput}
+          onChange={e => setManualInput(e.target.value)}
+          placeholder="Set counter"
+          style={{
+            marginRight: "10px",
+            padding: "8px",
+            borderRadius: "6px",
+            border: "1px solid #ccc",
+            width: "100px"
+          }}
+        />
+        <button onClick={() => setCount(Number(manualInput) || 0)}>
+          Set Value
+        </button>
+        <button
+          style={{ ...buttonStyle, marginLeft: "12px" }}
+          onClick={() => setCount(count + 1)}
+        >
           count is {count}
         </button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
+
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
@@ -78,7 +108,7 @@ function App() {
           className="task-input"
           placeholder="Enter task"
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={e => setInput(e.target.value)}
           onKeyDown={onInputKeyDown}
         />
         <button className="add-btn" onClick={addTask} disabled={!input.trim()}>
